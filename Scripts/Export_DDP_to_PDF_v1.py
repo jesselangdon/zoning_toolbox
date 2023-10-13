@@ -149,7 +149,6 @@ def ms_loop():
 
         #--Remove existing .PDF with same names from current and archive folders
         currentpath = os.path.join(currentdir, a_twp + a_rng, fname)
-        # archivepath = '"' + os.path.join(archivedir, a_twp + a_rng, fname) + '"'
         archivepath = os.path.join(archivedir, a_twp + a_rng, fname)
         arcpy.AddMessage("currentpath: " + currentpath)
         arcpy.AddMessage("archivepath: " + archivepath)
