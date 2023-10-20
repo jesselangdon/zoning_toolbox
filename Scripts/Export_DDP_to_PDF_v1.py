@@ -174,7 +174,7 @@ def ms_loop():
         elif gpat_layout == "Individual Sections":
             a_twp, a_rng, a_sec, a_qtr = get_export_filename_section(mpg_parse_list)
 
-        arcpy.AddMessage("Section = {0}, Township = {1}, Range = {2}, Quarter Section = {3}".format(a_sec, a_twp, a_rng, a_qtr))
+        arcpy.AddMessage(f"Section: {a_sec}, Township: {a_twp}, Range: {a_rng}, Quarter Section: {a_qtr}")
         fname = f"{a_twp}{a_rng}{a_sec}{a_qtr}{str(date_stamp)}.pdf"
         fname_cur = f"{a_twp}{a_rng}{a_sec}{a_qtr}.pdf"
         arcpy.AddMessage("Archived filename: {}".format(fname))
