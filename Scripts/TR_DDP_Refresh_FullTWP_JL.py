@@ -85,7 +85,7 @@ lyr = mf.listLayers(".PageGrid_MASTERPageGrid")[0]
 # Determine if user-selected township/range should use the full township layout, or quarter section layout
 if twp_rng in twp_list:  #FIXME The problem with this is that there are often two features in the map grid where QSLABEL  = 'FULL' AND QSLABEL = 'TWP'
     # use the full township layout
-    lyt_full_twp = aprx.listLayouts("FULL_TWP_DDP_OZmap_v1")[0]
+    lyt_full_twp = aprx.listLayouts("FULL_TWP_MapSeries_OZmap")[0]
     ms = lyt_full_twp.mapSeries
     dq = "[TOWNSHIP] = {0} AND [RANGE] = {1} AND [QSLABEL] = 'TWP'".format(gpat_Twp, gpat_Rng)
     arcpy.AddMessage("Definition query to apply: " + dq)
@@ -96,7 +96,7 @@ if twp_rng in twp_list:  #FIXME The problem with this is that there are often tw
     arcpy.AddMessage("Full township layout and map series refreshed successfully!")
 else:
     # use the quarter section layout
-    lyt_qrt_sec = aprx.listLayouts("TR_DDP_OZmap_v1")[0]
+    lyt_qrt_sec = aprx.listLayouts("Section_MapSeries_OZmap")[0]
     ms = lyt_qrt_sec.mapSeries
     dq = f"[TOWNSHIP] = {gpat_Twp} AND [RANGE] = {gpat_Rng} AND [QSLABEL] = 'FULL'"
     arcpy.AddMessage("Definition query to apply: " + dq)

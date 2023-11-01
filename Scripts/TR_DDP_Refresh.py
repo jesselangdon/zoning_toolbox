@@ -78,7 +78,7 @@ aprx = arcpy.mp.ArcGISProject("CURRENT")
 # aprx = arcpy.mp.ArcGISProject(r'\\snoco\gis\plng\carto\Zoning_OZ_MXD\TESTING\OZmapMaker_v0\OZmapMaker_v20230925.aprx') #TEST
 map = aprx.listMaps("Premier Data Frame")[0]
 lyr = map.listLayers(".PageGrid_MASTERPageGrid")[0]
-layout = aprx.listLayouts("TR_DDP_OZmap_v1")[0]
+layout = aprx.listLayouts("Section_MapSeries_OZmap")[0]
 ms = layout.mapSeries
 
 #--CALL TOWNSHIP RANGE FUNCTION. Only perform if township and range is within Snohomish county

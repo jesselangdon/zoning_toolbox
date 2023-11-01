@@ -22,12 +22,11 @@ import os, os.path, datetime, glob
 # Set global variables
 
 # gpat_layout = arcpy.GetParameterAsText(0)
-gpat_layout = "Full Township"
+gpat_layout = "Individual Sections"
 # gpat_continue_cond = arcpy.GetParameterAsText(1)
-gpat_continue = "true" #TEST
-gpat_continue_cond = str(gpat_continue)
+gpat_continue_cond = "true" #TEST
 # aprx = arcpy.mp.ArcGISProject("CURRENT")
-aprx = arcpy.mp.ArcGISProject(r'C:\Users\SCDJ2L\dev\Zoning\OZmapMaker_v0\OZmapMaker_FullTWP.aprx') #TEST
+aprx = arcpy.mp.ArcGISProject(r'C:\Users\SCDJ2L\dev\Zoning\OZmapMaker_v0\OZmapMaker_v20231023.aprx') #TEST
 map = aprx.listMaps("Premier Data Frame")[0]
 lyr = map.listLayers(".PageGrid_MASTERPageGrid")[0]
 
@@ -39,7 +38,7 @@ archivedir = r"C:\Users\SCDJ2L\dev\Zoning\TEST\HistoricalZoningMaps\pdf" #TEST
 
 def get_layout(user_aprx):
     '''Returns a layout object from the APRX, only if it is one of the two valid layouts'''
-    layouts_valid = ["FULL_TWP_DDP_OZmap_v1", "TR_DDP_OZmap_v1"]
+    layouts_valid = ["FULL_TWP_MapSeries_OZmap", "Section_MapSeries_OZmap"]
     layouts_aprx = user_aprx.listLayouts()
     for layout in layouts_aprx:
         if layout.name in layouts_valid:
@@ -126,6 +125,7 @@ def get_export_filename_fullTWP(parse_list):
     '''Returns four string variables, if exporting PDF files by for the full towship'''
     a_sec = r"00"                               # section string
     a_twp = str(parse_list[0][1:3])             # township string
+    a_rng = r"00"
     if len(str(parse_list[1])) > 3:             # range string - if 2-digit range, then slice by [1:3]
         a_rng = str(parse_list[1][1:3])
     elif len(str(parse_list[1])) == 3:
